@@ -1,14 +1,3 @@
-<?php
-// $adminMenuList  = [
-//     [
-//         'url' => '/admin/users',
-//         'name' => '',
-//         'icon' => '',
-//         'active' => '',
-//         'hr' => false
-//     ],
-// ];
-?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -23,7 +12,7 @@
 </head>
 
 <body id="page-top">
-<include file="alert2/alert2" />
+
     <div id="wrapper">
 
         <include file="admin/include/leftMenu" />
