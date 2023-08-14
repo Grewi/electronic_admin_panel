@@ -73,6 +73,62 @@ class pageGeneratorController extends controller
         }
     }
 
+    public function pgDataEdit()
+    {
+        $dataPg = data_page_generator::find(request('get')->data_id);
+        $page = page_generator::find($dataPg->id);
+        $this->bc(lang('admin', 'pageGenerator'), '/admin/pg/');
+        $this->bc($page->name, '/' . ADMIN . '/pg/data/' . $page->id);
+        $this->bc(lang('admin', 'addData'));
+        $this->data['dataPg'] = $dataPg;
+        $this->data['page'] = $page;
+        $this->data['listTypeData'] = $this->listTypeData;
+        new view('admin/pageGenerator/data/update', $this->data);
+    }
+
+    public function pgDataEditSave()
+    {
+        $dataPg = data_page_generator::find(request('get')->data_id);
+        $page = page_generator::find($dataPg->id);
+
+        $valid = new validate();
+        $valid->name('csrf')->csrf('pgData');
+        $valid->name('name')->text();
+        $valid->name('type')->empty();
+        $valid->name('value')->empty();
+        if($page && $valid->control() && array_key_exists($valid->return('type'), $this->listTypeData)){
+            $dataPg->name = $valid->return('name');
+            $dataPg->type = $valid->return('type');
+            $dataPg->data = $valid->return('type') != 3 ? json_encode($valid->return('value')) : $valid->return('value');
+            $dataPg->save();
+            redirect(referal_url(2));
+        }else{
+            dd($valid);
+            redirect(referal_url());
+        }
+    }
+
+    public function pgDataDelete()
+    {
+        $dataPg = data_page_generator::find(request('get')->data_id);
+        $page = page_generator::find($dataPg->id);
+        $this->bc(lang('admin', 'pageGenerator'), '/admin/pg/');
+        $this->bc($page->name, '/' . ADMIN . '/pg/data/' . $page->id);
+        $this->bc(lang('admin', 'addData'));
+        $this->data['dataPg'] = $dataPg;
+        $this->data['page'] = $page;
+        $this->data['listTypeData'] = $this->listTypeData;
+        new view('admin/pageGenerator/data/delete', $this->data);
+    }
+
+    public function pgDataDeleteAction()
+    {
+        $dataPg = data_page_generator::find(request('get')->data_id);
+        $page = page_generator::find($dataPg->id);
+        $dataPg->delete();
+        redirect(referal_url(2));
+    }
+
     public function create()
     {
         $this->title(lang('admin', 'createPage'));

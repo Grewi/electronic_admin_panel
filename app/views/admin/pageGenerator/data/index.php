@@ -29,10 +29,10 @@
                                 <tr>
                                     <td><?= $d->id ?></td>
                                     <td><?= $d->name ?></td>
-                                    <td><?= $d->data ?></td>
+                                    <td><?= json_decode($d->data) ?></td>
                                     <td>
-                                        <a href="#<?= $user->id ?>">Редактировать</a>
-                                        <a href="#">Удалить</a>
+                                        <a class="btn btn-primary btn-sm" href="/<?=ADMIN?>/pg/data/edit/<?=$d->id?>"><i class="fa fa-pen"></i></a>
+                                        <a class="btm btn-danger btn-sm" href="/<?=ADMIN?>/pg/data/delete/<?=$d->id?>"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
