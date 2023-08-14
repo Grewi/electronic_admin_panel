@@ -22,7 +22,7 @@ class pageController extends controller
         if(is_iterable($data)){
             foreach($data as $d){
                 if($d->type == 2 ||$d->type == 1){
-                    $this->data[$d->name] = $d->data;
+                    $this->data[$d->name] = json_decode($d->data);
                 }
                 if($d->type == 3){
                     $this->data[$d->name] = json_decode($d->data);

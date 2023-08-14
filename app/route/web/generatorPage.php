@@ -5,6 +5,10 @@ $route->namespace('app/controllers/admin')->prefix('admin')->group('admin/pg', f
     $route->get('/')->controller('pageGeneratorController', 'index');
     $route->get('/data/create/{pg_id}')->controller('pageGeneratorController', 'pgAddData');
     $route->post('/data/create/{pg_id}')->controller('pageGeneratorController', 'pgListSave');
+    $route->get('/data/edit/{data_id}')->controller('pageGeneratorController', 'pgDataEdit');
+    $route->post('/data/edit/{data_id}')->controller('pageGeneratorController', 'pgDataEditSave');
+    $route->get('/data/delete/{data_id}')->controller('pageGeneratorController', 'pgDataDelete');
+    $route->post('/data/delete/{data_id}')->controller('pageGeneratorController', 'pgDataDeleteAction');    
     $route->get('/data/{pg_id}')->controller('pageGeneratorController', 'pgList');
     // $route->post('/data/{pg_id}')->controller('pageGeneratorController', 'pgListSave');
     $route->get('/create')->controller('pageGeneratorController', 'create');
