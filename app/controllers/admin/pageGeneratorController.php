@@ -63,7 +63,7 @@ class pageGeneratorController extends controller
                 'page_id' => $page->id,
                 'name' => $valid->return('name'),
                 'type' => $valid->return('type'),
-                'data' => $valid->return('value'),
+                'data' => $valid->return('type') != 3 ? json_encode($valid->return('value')) : $valid->return('value'),
             ];
             data_page_generator::insert($data);
             redirect(referal_url(2));
