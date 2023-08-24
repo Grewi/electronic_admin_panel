@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+	RewriteBase /
+    RewriteRule ^(.*)$ /public/$1 [L]
+    RewriteRule ^((?!public/).*) /public/$l [L,NC]
+</IfModule>
