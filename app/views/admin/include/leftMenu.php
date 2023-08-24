@@ -1,5 +1,5 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fa fa-hand-pointer" aria-hidden="true"></i>
         </div>
@@ -26,6 +26,12 @@
                 <a class="collapse-item" href="/<?=ADMIN?>/roles">Роли</a>
             </div>
         </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="/<?=ADMIN?>/settings">
+            <i class="fa fa-cog" aria-hidden="true"></i>
+            <span>Настройки</span></a>
     </li>
 
     <li class="nav-item">
